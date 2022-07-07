@@ -1,7 +1,7 @@
 from sqlalchemy import Column, DECIMAL, Date, DateTime, Index, Integer
 from sqlalchemy.dialects.mysql import CHAR, INTEGER, VARCHAR
 
-from db.base import Base
+from db import Base
 
 
 class Person(Base):

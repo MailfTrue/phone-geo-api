@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 
-from db.base import get_session, database
+from db import get_session, database
 from sqlalchemy.ext.asyncio import AsyncSession
 import schemas
 import crud
