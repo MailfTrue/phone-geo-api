@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.29
+    env_file: .env
+    volumes:
+      - ./peoples.sql:/root/peoples.sql
+      - mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  api:
+    container_name: api
+    image: phone-geo-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    env_file: .env
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+    volumes:
+      - "./app:/code/app"
+    ports:
+      - "8080:80"
+
+volumes:
+  mysql:
